@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pengumuman Kelulusan Kelas 6</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 80%;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    #result.lulus { color: green; }
+    #result.tidaklulus { color: red; }
+  </style>
+</head>
+<body>
+  <img src="logo-sekolah.png" alt="Logo Sekolah" width="100">
+  <h1>Pengumuman Kelulusan</h1>
+  <div class="container">
+    <p>Silakan masukkan NISN Anda:</p>
+    <input type="text" id="nisn" placeholder="Masukkan NISN" />
+    <br>
+    <button onclick="cekKelulusan()">Cek Kelulusan</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const dataSiswa = [
+      { nisn: '3137627398', nama: "A'INA DEVI AZZAHRA" },
+      { nisn: '3138044817', nama: "AFRIL LIA IKA" },
+      { nisn: '3139849523', nama: "ENUH NUGRAHA" },
+      { nisn: "0128234544", nama: "FARHAN WAHYUDIN" },
+      { nisn: '3122605962', nama: "IKSAN MAULANA HABIBI" },
+      { nisn: '3125565961', nama: "JAATSIYAH AHQAF" },
+      { nisn: '0129025255', nama: "JULIANA DAMA SETY" },
+      { nisn: '3138131760', nama: "M. AL FAIZI" },
+      { nisn: '3124008181', nama: "MUHAMMAD AL-FURQON ISKANDAR" },
+      { nisn: '3131202664', nama: "MUHAMMAD RIZKY AL-BIAN FIRMANSYAH" },
+      { nisn: '0127074645', nama: "RAKA ADITYA HILMI" },
+      { nisn: '0132677076', nama: "RERI RESTIAN" },
+      { nisn: '3132677076', nama: "RIAN HIDAYATULLAH" },
+      { nisn: '0138872803', nama: "SAPNA ANE GRESILA" },
+      { nisn: '3121339456', nama: "ZIDAN TRIYANDRA" },
+      { nisn: '3136212312', nama: "ZIHANDAARIN QURRATA'AYUNI" }
+    ];
+
+    function cekKelulusan() {
+      const nisn = document.getElementById('nisn').value.trim();
+      const resultDiv = document.getElementById('result');
+
+      const siswa = dataSiswa.find(row => row.nisn === nisn);
+
+      if (siswa) {
+        resultDiv.textContent = `Selamat ${siswa.nama}, Anda dinyatakan LULUS!`;
+        resultDiv.className = 'lulus';
+      } else {
+        resultDiv.textContent = "Data tidak ditemukan. Pastikan NISN Anda benar.";
+        resultDiv.className = 'tidaklulus';
+      }
+    }
+  </script>
+</body>
+</html>
